@@ -29,7 +29,6 @@
 
 .title :hover {
   color: blue;
-  transition: 0.7s;
   text-decoration: underline;
 }
 

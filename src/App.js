@@ -6,7 +6,7 @@ function App() {
   return <Router>
     {/* 한번에 하나의 route만 렌더링 */}
     <Switch> 
-      <Route path="/movie/:id">
+      <Route path={`${process.env.PUBLIC_URL}/movie/:id`}>
         <Detail />
       </Route>
       <Route path="/">

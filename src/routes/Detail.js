@@ -1,5 +1,5 @@
 import Info from "../components/Info";
-import styles from "./Home.module.css";
+import styled from "styled-components";
 import { useEffect, useInsertionEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -21,9 +21,9 @@ function Detail() {
   }, []);
   console.log(datas);
   return (
-    <div className={styles.container}>
+    <Container>
       {loading ? (
-        <h1>Loading...</h1>
+        <Loader>Loading...</Loader>
         ) : (
           <Info
           backgroundImageOriginal={datas.background_image_original}
@@ -37,8 +37,20 @@ function Detail() {
           downloadCount={datas.download_count}
           />
         )}
-    </div>
+    </Container>
   );
 }
 
+const Container = styled.div`
+  height: 100%;
+  justify-content: center;
+  margin: 50px;
+`;
+
+const Loader = styled.h1`
+  width: 100%;
+  height: 100vh;
+  font-weight: 300;
+  align-items: center;
+`;
 export default Detail;

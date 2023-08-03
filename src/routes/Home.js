@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
-import styles from "./Home.module.css";
+import styled from "styled-components";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -21,11 +21,11 @@ function Home() {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <Container>
     {loading ? (
-      <h1>Loading...</h1>
+      <Loader>Loading...</Loader>
     ) : (
-      <div className={styles.movies}>
+      <Movies>
         {movies.map((movie) => (
           <Movie 
           key={movie.id}
@@ -36,11 +36,31 @@ function Home() {
           genres={movie.genres}
           />
         ))}
-      </div>
+      </Movies>
     )}
-    </div>
+    </Container>
 
   );
 }
+
+const Container = styled.div`
+  height: 100%;
+  justify-content: center;
+  margin: 50px;
+`;
+
+const Loader = styled.h1`
+  width: 100%;
+  height: 100vh;
+  font-weight: 300;
+  align-items: center;
+`;
+
+const Movies = styled.div`
+  display: grid;
+  padding: 70px;
+  grid-template-columns: minmax(150px, 1fr) 1fr;
+  grid-gap: 50px;
+`;
 
 export default Home;
